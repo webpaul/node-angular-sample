@@ -1,0 +1,56 @@
+{
+  "name": "node-angular-sample",
+  "version": "0.1.0",
+  "description": "Node Angular sample app",
+  "engines": {
+    "node": "8.9.1"
+  },
+  "main": "config/index.js",
+  "scripts": {
+    "start": "nodemon --exec node config/index.js",
+    "precommit-msg": "echo 'Pre-commit checks for standard and mocha tests...' && exit 0",
+    "test": "standard --fix && mocha --recursive **/*.sspec.js",
+    "test-unit": "mocha --recursive **/*.sspec.js",
+    "test-debug": "mocha --recursive **/*.sspec.js --inspect --debug-brk",
+    "test-coverage": "nyc mocha --recursive **/*.sspec.js"
+  },
+  "standard": {
+    "env": [
+      "mocha"
+    ]
+  },
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "ejs": "2.4.1",
+    "express": "^4.13.3",
+    "lodash": "^4.17.4",
+    "mongodb": "^2.2.24"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT",
+  "pre-commit": [
+    "precommit-msg",
+    "test"
+  ],
+  "devDependencies": {
+    "chai": "*",
+    "co-mocha": "^1.2.1",
+    "fs": "0.0.1-security",
+    "mocha": "*",
+    "node-mocks-http": "^1.6.6",
+    "nodemon": "^1.14.11",
+    "nyc": "^11.3.0",
+    "pre-commit": "^1.2.2",
+    "sinon": "^4.1.2",
+    "sinon-chai": "^2.14.0",
+    "standard": "*"
+  }
+}
