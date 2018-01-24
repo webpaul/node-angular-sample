@@ -7,7 +7,7 @@
   },
   "main": "config/index.js",
   "scripts": {
-    "start": "nodemon --exec node config/index.js",
+    "start": "nodemon --exec node api/config/index.js",
     "precommit-msg": "echo 'Pre-commit checks for standard and mocha tests...' && exit 0",
     "test": "standard --fix && mocha --recursive **/*.sspec.js",
     "test-unit": "mocha --recursive **/*.sspec.js",
@@ -27,7 +27,7 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/webpaul/node-angular-sample/"
   },
   "keywords": [
     "node",
