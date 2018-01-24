@@ -6,6 +6,7 @@
     "node": "8.9.1"
   },
   "scripts": {
+    "install": "cd api && npm install && cd ../client && npm install",
     "start": "(cd api && npm start) | (cd client && npm start)",
     "test": "cd api && npm test && cd ../client && npm test"
   },
@@ -18,5 +19,11 @@
     "heroku",
     "express"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "pre-commit": [
+    "test"
+  ],
+ "devDependencies": {
+    "pre-commit": "^1.2.2"
+  }
 }
