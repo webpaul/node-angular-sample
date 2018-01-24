@@ -7,7 +7,7 @@
   },
   "scripts": {
     "start": "(cd api && npm start) | (cd client && npm start)",
-    "test": "cd api && npm test"
+    "test": "cd api && npm test && cd ../client && npm test"
   },
   "repository": {
     "type": "git",
