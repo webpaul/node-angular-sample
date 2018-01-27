@@ -1,0 +1,16 @@
+<h2>My Registrations</h2>
+<ul class="registrations">
+  <li *ngFor="let registration of registrations" [class.selected]="registration === selectedRegistration" (click)="onSelect(registration)">
+    <span class="badge">{{registration.id}}</span> {{registration.name}}
+  </li>
+</ul>
+
+<div *ngIf="selectedRegistration">
+  <h2>{{ selectedRegistration.name | uppercase }} Details</h2>
+  <div><span>id: </span>{{selectedRegistration.id}}</div>
+  <div>
+      <label>name:
+        <input [(ngModel)]="selectedRegistration.name" placeholder="name">
+      </label>
+  </div>
+</div>

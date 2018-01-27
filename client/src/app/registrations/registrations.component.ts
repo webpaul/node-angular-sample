@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../hero';
+import { Registration } from './registration';
 
 @Component({
-  selector: 'app-heroes',
-  templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.css']
+  selector: 'app-registrations',
+  templateUrl: './registrations.component.html',
+  styleUrls: ['./registrations.component.css']
 })
 
-export class HeroesComponent implements OnInit {
+export class RegistrationsComponent implements OnInit {
 
   constructor() { }
 
-  heroes: Hero[] = [
+  registrations: Registration[] = [
     { id: 11, name: 'Mr. Nice' },
     { id: 12, name: 'Narco' },
     { id: 13, name: 'Bombasto' },
@@ -24,10 +24,10 @@ export class HeroesComponent implements OnInit {
     { id: 20, name: 'Tornado' }
   ];
 
-  selectedHero: Hero;
+  selectedRegistration: Registration;
 
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
+  onSelect(registration: Registration): void {
+    this.selectedRegistration = registration;
   }
 
   ngOnInit() {
