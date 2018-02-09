@@ -7,7 +7,7 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        MockComponent({ selector: 'app-registrations' }),
+        MockComponent({ selector: 'router-outlet' }),
         MockComponent({ selector: 'app-messages' })
       ],
     }).compileComponents();
