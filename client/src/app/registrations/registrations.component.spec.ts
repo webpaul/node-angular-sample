@@ -1,7 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { RegistrationsComponent } from './registrations.component';
-import { FormsModule } from '@angular/forms';
+import { MockComponent } from '../../test/mock.component';
 
 describe('RegistrationsComponent', () => {
   let component: RegistrationsComponent;
@@ -10,7 +12,11 @@ describe('RegistrationsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ FormsModule ],
-      declarations: [ RegistrationsComponent ]
+      declarations: [
+        RegistrationsComponent,
+        MockComponent({ selector: 'app-registration-detail' }, ['registration']) 
+      ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();
   }));
