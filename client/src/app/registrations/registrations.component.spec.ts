@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { RegistrationsComponent } from './registrations.component';
 import { MockComponent } from '../../test/mock.component';
 import { RegistrationService } from '../registration.service';
+import { MessageService } from '../message.service';
 
 describe('RegistrationsComponent', () => {
   let component: RegistrationsComponent;
@@ -18,7 +19,8 @@ describe('RegistrationsComponent', () => {
         MockComponent({ selector: 'app-registration-detail' })
       ],
       providers: [
-        RegistrationService
+        RegistrationService,
+        MessageService
       ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })

@@ -7,19 +7,23 @@ import { RegistrationsComponent } from './registrations/registrations.component'
 import { FormsModule } from '@angular/forms';
 import { RegistrationDetailComponent } from './registration-detail/registration-detail.component';
 import { RegistrationService } from './registration.service';
+import { MessagesComponent } from './messages/messages.component';
+import { MessageService } from './message.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationsComponent,
-    RegistrationDetailComponent
+    RegistrationDetailComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule
   ],
   providers: [
-    RegistrationService
+    RegistrationService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })
