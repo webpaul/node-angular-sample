@@ -13,7 +13,8 @@ describe('RegistrationService', () => {
     expect(service).toBeTruthy();
   }));
 
-  it('should return data', inject([RegistrationService], (service: RegistrationService) => {
-    expect(service.getRegistrations().length).toEqual(5);
+  it('should return data', inject([RegistrationService], async (service: RegistrationService) => {
+    var data = await service.getRegistrations();
+    expect(data.length).toEqual(5);
   }));
 });

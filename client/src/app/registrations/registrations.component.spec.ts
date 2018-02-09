@@ -34,4 +34,16 @@ describe('RegistrationsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should load data on init', async () => {
+    await component.ngOnInit()
+    expect(component.registrations.length).toEqual(5);
+  });
+
+  it('should track selected item', async () => {
+    await component.ngOnInit()
+    var selected = component.registrations[1];
+    component.onSelect(selected);
+    expect(component.selectedRegistration).toBeTruthy();
+  });
 });

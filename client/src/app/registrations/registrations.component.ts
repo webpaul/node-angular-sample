@@ -24,8 +24,8 @@ export class RegistrationsComponent implements OnInit {
     this.selectedRegistration = registration;
   }
 
-  ngOnInit() {
-    this.registrations = this.registrationService.getRegistrations();
+  async ngOnInit() {
+    this.registrations = await this.registrationService.getRegistrations();
   }
 
 }

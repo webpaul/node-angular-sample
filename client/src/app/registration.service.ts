@@ -6,7 +6,7 @@ export class RegistrationService {
 
   constructor() { }
 
-  getRegistrations(): Registration[] {
+  async getRegistrations(): Promise<Registration[]> {
     return [
       { id: 11, name: 'Bob Smith' },
       { id: 12, name: 'Jannette Smithy' },
