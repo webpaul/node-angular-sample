@@ -1,7 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { RegistrationService } from './registration.service';
-import { MessageService } from './message.service';
+import { MessageService } from '../messages/message.service';
 
 describe('RegistrationService', () => {
   beforeEach(() => {

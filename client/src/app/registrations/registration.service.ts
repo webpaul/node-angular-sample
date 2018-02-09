@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Registration } from './registrations/registration';
-import { MessageService } from './message.service';
+import { Registration } from './registration';
+import { MessageService } from '../messages/message.service';
 
 @Injectable()
 export class RegistrationService {

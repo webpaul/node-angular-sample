@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 
 import { RegistrationsComponent } from './registrations.component';
 import { MockComponent } from '../../test/mock.component';
-import { RegistrationService } from '../registration.service';
-import { MessageService } from '../message.service';
+import { RegistrationService } from './registration.service';
+import { MessageService } from '../messages/message.service';
 
 describe('RegistrationsComponent', () => {
   let component: RegistrationsComponent;

@@ -6,9 +6,9 @@ import { AppComponent } from './app.component';
 import { RegistrationsComponent } from './registrations/registrations.component';
 import { FormsModule } from '@angular/forms';
 import { RegistrationDetailComponent } from './registration-detail/registration-detail.component';
-import { RegistrationService } from './registration.service';
+import { RegistrationService } from './registrations/registration.service';
 import { MessagesComponent } from './messages/messages.component';
-import { MessageService } from './message.service';
+import { MessageService } from './messages/message.service';
 
 @NgModule({
   declarations: [
