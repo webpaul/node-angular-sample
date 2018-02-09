@@ -6,6 +6,7 @@ import { RegistrationsComponent } from './registrations.component';
 import { MockComponent } from '../../test/mock.component';
 import { RegistrationService } from './registration.service';
 import { MessageService } from '../messages/message.service';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('RegistrationsComponent', () => {
   let component: RegistrationsComponent;
@@ -13,7 +14,10 @@ describe('RegistrationsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule ],
+      imports: [ 
+        FormsModule,
+        RouterTestingModule
+      ],
       declarations: [
         RegistrationsComponent,
         MockComponent({ selector: 'app-registration-detail' })
@@ -40,12 +44,5 @@ describe('RegistrationsComponent', () => {
   it('should load data on init', async () => {
     await component.ngOnInit()
     expect(component.registrations.length).toEqual(5);
-  });
-
-  it('should track selected item', async () => {
-    await component.ngOnInit()
-    var selected = component.registrations[1];
-    component.onSelect(selected);
-    expect(component.selectedRegistration).toBeTruthy();
   });
 });

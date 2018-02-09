@@ -1,6 +1,6 @@
 <h3>Top 3 Registrations</h3>
 <div class="grid grid-pad">
-  <a *ngFor="let registration of registrations" class="col-1-4">
+  <a *ngFor="let registration of registrations" class="col-1-4" routerLink="/detail/{{registration.id}}">
     <div class="module">
       <h4>{{registration.name}}</h4>
     </div>

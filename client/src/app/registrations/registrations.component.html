@@ -1,8 +1,8 @@
 <h2>My Registrations</h2>
 <ul class="registrations">
-  <li *ngFor="let registration of registrations" [class.selected]="registration === selectedRegistration" (click)="onSelect(registration)">
-    <span class="badge">{{registration.id}}</span> {{registration.name}}
+  <li *ngFor="let registration of registrations">
+      <a routerLink="/detail/{{registration.id}}">
+        <span class="badge">{{registration.id}}</span> {{registration.name}}
+      </a>
   </li>
 </ul>
-
-<app-registration-detail [registration]="selectedRegistration"></app-registration-detail>
