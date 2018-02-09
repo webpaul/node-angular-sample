@@ -14,7 +14,7 @@ describe('RegistrationsComponent', () => {
       imports: [ FormsModule ],
       declarations: [
         RegistrationsComponent,
-        MockComponent({ selector: 'app-registration-detail' }, ['registration']) 
+        MockComponent({ selector: 'app-registration-detail' }) 
       ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
