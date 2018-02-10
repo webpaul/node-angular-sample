@@ -7,6 +7,7 @@ import { MockComponent } from '../../test/mock.component';
 import { RegistrationService } from './registration.service';
 import { MessageService } from '../messages/message.service';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 describe('RegistrationsComponent', () => {
   let component: RegistrationsComponent;
@@ -24,7 +25,9 @@ describe('RegistrationsComponent', () => {
       ],
       providers: [
         RegistrationService,
-        MessageService
+        MessageService,
+        HttpClient,
+        HttpHandler
       ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })

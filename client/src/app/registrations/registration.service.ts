@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Registration } from './registration';
 import { MessageService } from '../messages/message.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class RegistrationService {
 
-  constructor(private messageService: MessageService) { }
+  constructor(
+    private http: HttpClient,
+    private messageService: MessageService
+  ) { }
 
   async getRegistration(id: number): Promise<Registration> {
-    this.messageService.add(`HeroService: fetched hero id=${id}`);
+    this.log(`Retrieved registration id=${id}`);
     return this.items.find(x => x.id == id);
   }  
   
@@ -21,8 +25,12 @@ export class RegistrationService {
   ];
 
   async getRegistrations(): Promise<Registration[]> {
-    this.messageService.add('Registrations retrieved from API');
+    this.log('Registrations retrieved from API');
 
     return this.items;
+  }  
+
+  private log(message: string) {
+    this.messageService.add(`Registration service: ${message}`);
   }  
 }

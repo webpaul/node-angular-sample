@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard.component';
 import { RegistrationService } from '../registrations/registration.service';
 import { MessageService } from '../messages/message.service';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -19,7 +20,9 @@ describe('DashboardComponent', () => {
       ],
       providers: [ 
         RegistrationService,
-        MessageService
+        MessageService,
+        HttpClient, 
+        HttpHandler
       ]
     })
     .compileComponents();

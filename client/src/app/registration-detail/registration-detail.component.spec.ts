@@ -5,6 +5,7 @@ import { RegistrationDetailComponent } from './registration-detail.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { RegistrationService } from '../registrations/registration.service';
 import { MessageService } from '../messages/message.service';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 describe('RegistrationDetailComponent', () => {
   let component: RegistrationDetailComponent;
@@ -21,7 +22,9 @@ describe('RegistrationDetailComponent', () => {
       ],
       providers: [
         RegistrationService,
-        MessageService
+        MessageService,
+        HttpClient, 
+        HttpHandler
       ]
     })
     .compileComponents();

@@ -2,13 +2,16 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { RegistrationService } from './registration.service';
 import { MessageService } from '../messages/message.service';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 describe('RegistrationService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
         RegistrationService,
-        MessageService
+        MessageService,
+        HttpClient,
+        HttpHandler
       ]
     });
   });
