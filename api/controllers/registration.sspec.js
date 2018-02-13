@@ -6,6 +6,7 @@ const sinon = test.sinon
 
 const controller = require('./registration')
 var httpMocks = require('node-mocks-http')
+var ObjectID = require('mongodb').ObjectID
 
 process.env.API_KEY = 'abc'
 process.env.NO_ERROR_OUTPUT = true
@@ -30,6 +31,28 @@ describe('registration controller', function () {
     var data = JSON.parse(res._getData())
 
     expect(data.length).to.equal(1)
+  })
+
+  it('should get by id', async () => {
+    const global = require('../config/global')
+
+    var id = '5a679fa38084044c20cdbe69'
+    test.fakeFind(global, 'registrations', [
+      { _id: new ObjectID(id), first_name: 'bob' }
+    ])
+
+    var res = httpMocks.createResponse()
+    var req = httpMocks.createRequest({
+      headers: {
+        API_KEY: process.env.API_KEY
+      }
+    })
+
+    await controller.getItem(id, res, req)
+
+    var data = JSON.parse(res._getData())
+
+    expect(data.first_name).to.equal('bob')
   })
 
   it('handles find errors', async () => {

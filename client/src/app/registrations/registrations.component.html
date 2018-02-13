@@ -2,7 +2,7 @@
 <ul class="registrations">
   <li *ngFor="let registration of registrations">
       <a routerLink="/detail/{{registration.id}}">
-        <span class="badge">{{registration.id}}</span> {{registration.name}}
+        <span class="badge" title="{{registration.id}}">--</span> {{registration.name}}
       </a>
   </li>
 </ul>

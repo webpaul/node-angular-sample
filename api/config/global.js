@@ -5,6 +5,8 @@ process.env.MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/
 process.env.API_KEY = process.env.API_KEY || 'lksdjlkj45j4h5k4j5h345kjhskjdhfskdjf'
 process.env.IS_LOCAL = process.env.MONGODB_URI.indexOf('localhost') > 0
 
+var ObjectID = require('mongodb').ObjectID
+
 module.exports = {
 
   initialize: function (next) {
@@ -25,6 +27,21 @@ module.exports = {
 
       if (next) next()
     })
+  },
+
+  async findOne (name, id, res, req) {
+    if (!this.checkAPIKey(req, res)) return
+
+    try {
+      var cursor = this[name].find({ _id: new ObjectID(id) })
+      var results = await cursor.toArray()
+      var item = null
+      if (results && results.length > 0) item = results[0]
+
+      res.status(200).json(item)
+    } catch (err) {
+      this.handleError(res, err, 'Error finding ' + name + ' data')
+    }
   },
 
   async find (name, limit, res, req) {

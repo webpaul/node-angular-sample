@@ -6,6 +6,10 @@ var getItems = async function (limit, res, req) {
   return global.find('registrations', limit, res, req)
 }
 
+var getItem = async function (id, res, req) {
+  return global.findOne('registrations', id, res, req)
+}
+
 var addItem = async function (req, res) {
   var newItem = req.body
 
@@ -33,18 +37,24 @@ var addItem = async function (req, res) {
 
 module.exports = {
   set: function (app) {
-    app.get('/api/registration', function (req, res) {
-      var limit = parseInt(req.query.limit)
-      if (!limit) limit = 30
-      getItems(limit, res, req)
+    app.get('/api/registration/:id', function (req, res) {
+      var id = req.params.id
+      getItem(id, res, req)
     })
 
     app.get('/api/registration/all', function (req, res) {
       getItems(null, res, req)
     })
 
+    app.get('/api/registration', function (req, res) {
+      var limit = parseInt(req.query.limit)
+      if (!limit) limit = 30
+      getItems(limit, res, req)
+    })
+
     app.post('/api/registration', addItem)
   },
   getItems: getItems,
+  getItem: getItem,
   addItem: addItem
 }

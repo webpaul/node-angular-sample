@@ -20,7 +20,7 @@ export class RegistrationDetailComponent implements OnInit {
   @Input() registration: Registration;
 
   async ngOnInit() {
-    var item = await this.registrationService.getRegistration(+this.route.snapshot.paramMap.get('id'));
+    var item = await this.registrationService.getRegistration(this.route.snapshot.paramMap.get('id'));
     this.registration = item;
   }
 

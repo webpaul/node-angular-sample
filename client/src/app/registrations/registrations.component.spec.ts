@@ -8,6 +8,7 @@ import { RegistrationService } from './registration.service';
 import { MessageService } from '../messages/message.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClient, HttpHandler } from '@angular/common/http';
+import { Registration } from './registration';
 
 describe('RegistrationsComponent', () => {
   let component: RegistrationsComponent;
@@ -34,7 +35,12 @@ describe('RegistrationsComponent', () => {
     .compileComponents();
   }));
 
+  var service: RegistrationService = null;
+
   beforeEach(() => {
+    this.service = TestBed.get(RegistrationService);
+    spyOn(this.service, 'getRegistrations').and.returnValue(Promise.resolve([]));
+
     fixture = TestBed.createComponent(RegistrationsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -46,6 +52,6 @@ describe('RegistrationsComponent', () => {
 
   it('should load data on init', async () => {
     await component.ngOnInit()
-    expect(component.registrations.length).toEqual(5);
+    expect(component.registrations.length).toEqual(0);
   });
 });

@@ -29,6 +29,9 @@ describe('DashboardComponent', () => {
   }));
 
   beforeEach(() => {
+    this.service = TestBed.get(RegistrationService);
+    spyOn(this.service, 'getRegistrations').and.returnValue(Promise.resolve([]));
+
     fixture = TestBed.createComponent(DashboardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
