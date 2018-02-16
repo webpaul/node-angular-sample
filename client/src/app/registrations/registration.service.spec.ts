@@ -8,8 +8,6 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { Registration } from './registration';
 
 describe('RegistrationService', () => {
-  let httpMock: HttpTestingController;
-
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -18,25 +16,26 @@ describe('RegistrationService', () => {
       providers: [
         RegistrationService,
         MessageService,
-        HttpClient,
-        HttpHandler
+        HttpClient
       ]
     });
-
-    httpMock = TestBed.get(HttpTestingController);
   });
 
-  it('should be created', inject([RegistrationService], (service: RegistrationService) => {
+  afterEach(inject([HttpTestingController], (httpMock: HttpTestingController) => {
+    httpMock.verify();
+  }));  
+
+  it('should be created', inject([HttpTestingController, RegistrationService], (httpMock: HttpTestingController, service: RegistrationService) => {
     expect(service).toBeTruthy();
+    httpMock.expectNone(service.apiUrl);
   }));
 
-  /*fit('should return data', inject([RegistrationService], async (service: RegistrationService) => {
-    var data = await service.getRegistrations();
-    const req = httpMock.expectOne(service.apiUrl);
-    req.flush([{ _id: 'test' }]);
-    expect(data.length).toEqual(1);
-    expect(data[0].id).toEqual('test');
-
-    httpMock.verify();
-  }));*/
+  it('should return data', inject([HttpTestingController, RegistrationService], async (httpMock: HttpTestingController, service: RegistrationService) => {
+    var promise = service.getRegistrations();
+    
+    httpMock.expectOne(service.apiUrl).flush([{ _id: 'test' }]);
+    
+    var data = await promise;
+    expect(data.length).toBe(1);
+  }));
 });

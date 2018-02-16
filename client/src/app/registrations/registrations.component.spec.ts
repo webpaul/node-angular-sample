@@ -7,8 +7,9 @@ import { MockComponent } from '../../test/mock.component';
 import { RegistrationService } from './registration.service';
 import { MessageService } from '../messages/message.service';
 import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClient, HttpHandler } from '@angular/common/http';
+import { HttpHandler } from '@angular/common/http';
 import { Registration } from './registration';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 describe('RegistrationsComponent', () => {
   let component: RegistrationsComponent;
@@ -18,7 +19,8 @@ describe('RegistrationsComponent', () => {
     TestBed.configureTestingModule({
       imports: [ 
         FormsModule,
-        RouterTestingModule
+        RouterTestingModule,
+        HttpClientTestingModule
       ],
       declarations: [
         RegistrationsComponent,
@@ -27,7 +29,6 @@ describe('RegistrationsComponent', () => {
       providers: [
         RegistrationService,
         MessageService,
-        HttpClient,
         HttpHandler
       ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
@@ -39,7 +40,7 @@ describe('RegistrationsComponent', () => {
 
   beforeEach(() => {
     this.service = TestBed.get(RegistrationService);
-    spyOn(this.service, 'getRegistrations').and.returnValue(Promise.resolve([]));
+    spyOn(this.service, 'getRegistrations').and.returnValue(Promise.resolve([{}, {}]));
 
     fixture = TestBed.createComponent(RegistrationsComponent);
     component = fixture.componentInstance;
@@ -52,6 +53,6 @@ describe('RegistrationsComponent', () => {
 
   it('should load data on init', async () => {
     await component.ngOnInit()
-    expect(component.registrations.length).toEqual(0);
+    expect(component.registrations.length).toEqual(2);
   });
 });

@@ -30,7 +30,6 @@ export class RegistrationService {
 
     try {
       var result = await this.http.get<any[]>(this.apiUrl).toPromise();
-      var id = 1;
       result.forEach(item => {
         this.toModel(item);
       });
