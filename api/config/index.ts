@@ -1,12 +1,14 @@
-'use strict'
+import express = require('express');
+import { Request, Response, NextFunction } from 'express'
+import * as bodyParser from 'body-parser'
 
-var app = require('express')()
+var app = express();
+
 app.set('port', (process.env.PORT || 8080))
 
-var bodyParser = require('body-parser')
 app.use(bodyParser.json())
 
-app.use(function (req, res, next) {
+app.use(function (req: Request, res: Response, next: NextFunction) {
   res.header('Access-Control-Allow-Origin', '*')
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
   next()
@@ -14,7 +16,7 @@ app.use(function (req, res, next) {
 
 var global = require('./global')
 console.log('Initializing')
-global.initialize(function (err) {
+global.initialize(function (err: Error) {
   if (err) throw err
 
   require('../controllers/registration').set(app)

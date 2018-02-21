@@ -7,7 +7,7 @@
   },
   "main": "config/index.js",
   "scripts": {
-    "start": "nodemon --exec node config/index.js",
+    "start": "nodemon --exec ts-node config/index.ts",
     "test": "standard --fix && mocha --recursive **/*.sspec.js",
     "test-unit": "cd api && mocha --recursive **/*.sspec.js",
     "test-debug": "cd api && mocha --recursive **/*.sspec.js --inspect --debug-brk",
@@ -22,10 +22,14 @@
     "body-parser": "^1.16.1",
     "express": "^4.13.3",
     "lodash": "^4.17.4",
-    "mongodb": "^2.2.24"
+    "mongodb": "^2.2.24",
+    "ts-node": "^5.0.0"
   },
   "license": "MIT",
   "devDependencies": {
+    "@types/body-parser": "^1.16.8",
+    "@types/express": "^4.11.1",
+    "@types/mongodb": "^3.0.5",
     "chai": "*",
     "co-mocha": "^1.2.1",
     "fs": "0.0.1-security",
@@ -35,6 +39,7 @@
     "nyc": "^11.3.0",
     "sinon": "^4.1.2",
     "sinon-chai": "^2.14.0",
-    "standard": "*"
+    "standard": "*",
+    "typescript": "^2.7.1"
   }
 }
