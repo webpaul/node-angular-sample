@@ -88,7 +88,7 @@ describe('registration controller', function () {
     expect(data.error).to.equal('Must provide last_name')
   })
 
-  /*it('should add a new registration', async () => {
+  it('should add a new registration', async () => {
     var res = httpMocks.createResponse()
 
     var req = httpMocks.createRequest({
@@ -103,14 +103,12 @@ describe('registration controller', function () {
       }
     })
 
-    global.registrations = {
-      insertOne: sinon.spy()
-    }
+    var spy = sinon.stub(global, 'insertOne')
 
     await controller.addItem(req, res)
     var data = JSON.parse(res._getData())
 
-    expect(global.registrations.insertOne).to.have.callCount(1)
+    expect(global.insertOne).to.have.callCount(1)
 
     expect(data).to.deep.equal({
       second_last_name: '',
@@ -138,18 +136,13 @@ describe('registration controller', function () {
       }
     })
 
-    global.registrations = {
-      insertOne: function () {}
-    }
-
-    sinon.stub(global.registrations, 'insertOne').throws(new Error('Insert error'))
+    sinon.stub(global, 'insertOne').throws(new Error('Insert error'))
 
     await controller.addItem(req, res)
     var data = JSON.parse(res._getData())
 
-    expect(global.registrations.insertOne).to.have.callCount(1)
+    expect(global.insertOne).to.have.callCount(1)
 
     expect(data.error).to.equal('Failed to create new item')
   })
-  */
 })

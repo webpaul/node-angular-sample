@@ -30,9 +30,7 @@ export class Registration {
     try {
       newItem.createTime = new Date()
 
-      if(!global.registrations) throw new Error('Not initialized')
-
-      await global.registrations.insertOne(newItem)
+      await global.insertOne(global.REGISTRATION_DATA, newItem)
       res.status(201).json(newItem)
     } catch (err) {
       global.handleError(res, err, 'Failed to create new item')

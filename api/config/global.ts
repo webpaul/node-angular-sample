@@ -10,8 +10,6 @@ import { Request, Response } from 'express'
 export class Global {
 
   private database?: Db;
-  public registrations?: Collection<any>;
-  public SINGLE_UPDATE = { upsert: false, multi: false }
   public REGISTRATION_DATA = 'registration_data'
   public DEFAULT_LIMIT = 1000
 
@@ -33,7 +31,6 @@ export class Global {
       if(!process.env.MONGODB_DBNAME) throw Error('process.env.MONGODB_DBNAME is undefined')
 
       this.database = (await MongoClient.connect(process.env.MONGODB_URI)).db(process.env.MONGODB_DBNAME)
-      this.registrations = this.database.collection(this.REGISTRATION_DATA)
 
       //console.log(require('util').inspect(this.registrations., null, 4))
 
@@ -66,7 +63,11 @@ export class Global {
 
     return this.database.collection(name);
   }
-  
+
+  public insertOne(name: string, data: any) {
+    this.collection(name).insertOne(data)
+  }
+
   public async find (name: string, limit: number, res: Response, req: Request) : Promise<void> {
     if (!this.checkAPIKey(req, res)) return
 
