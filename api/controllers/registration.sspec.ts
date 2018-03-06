@@ -57,6 +57,7 @@ describe('registration controller', function () {
 
   it('handles find errors', async () => {
     var stub = sinon.stub(global, 'collection').withArgs(global.REGISTRATION_DATA)
+    
     stub.returns(test.fakeFind(new Error('Oh no!')))
 
     var res = httpMocks.createResponse()
@@ -70,7 +71,7 @@ describe('registration controller', function () {
 
     var data = JSON.parse(res._getData())
 
-    expect(data.error).to.equal('Error finding registration_data data')
+    expect(data.error).to.equal('Error finding ' + global.REGISTRATION_DATA + ' data')
   })
 
   it('should enforce required fields for new registrations', async () => {

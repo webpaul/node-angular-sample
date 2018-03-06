@@ -30,9 +30,8 @@ export class Global {
       if(!process.env.MONGODB_URI) throw Error('process.env.MONGODB_URI is undefined')
       if(!process.env.MONGODB_DBNAME) throw Error('process.env.MONGODB_DBNAME is undefined')
 
-      this.database = (await MongoClient.connect(process.env.MONGODB_URI)).db(process.env.MONGODB_DBNAME)
-
-      //console.log(require('util').inspect(this.registrations., null, 4))
+      var client = await MongoClient.connect(process.env.MONGODB_URI)
+      this.database = client.db(process.env.MONGODB_DBNAME)
 
       console.log('Database connection to ' + process.env.MONGODB_DBNAME + ' ready')
 
