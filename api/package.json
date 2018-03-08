@@ -10,7 +10,8 @@
     "start": "nodemon --exec ts-node config/index.ts",
     "test": "mocha -r ts-node/register **/*.sspec.ts",
     "test-debug": "mocha -r ts-node/register **/*.sspec.ts --inspect --debug-brk",
-    "test-coverage": "nyc mocha -r ts-node/register **/*.sspec.ts"
+    "test-coverage": "nyc mocha -r ts-node/register **/*.sspec.ts",
+    "sample-ts": "ts-node intro/async.await.ts"
   },
   "standard": {
     "env": [
